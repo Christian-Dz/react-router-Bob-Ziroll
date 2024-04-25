@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import bgImg from "../assets/images/about-hero.png"
-import "../src/App"
+
 
 export function About(){
     
