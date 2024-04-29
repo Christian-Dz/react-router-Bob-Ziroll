@@ -11,11 +11,7 @@ export function HostVans() {
   }, []);
 
   const hostVansEls = vans.map((van) => (
-    <Link
-      to={`/host/hostvans/${van.id}`}
-      key={van.id}
-      className="host-van-link-wrapper"
-    >
+    <Link to={van.id} key={van.id} className="host-van-link-wrapper">  {/* to={`/host/hostvans/${van.id}`}  <----- era una ruta obsoluta y se paso a una relativa porque el componente vive en el contexto de /host/vans  */}
       <div className="host-van-single" key={van.id}>
         <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
         <div className="host-van-info">

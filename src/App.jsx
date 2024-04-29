@@ -15,6 +15,7 @@ import { HostVanDetail } from '../pages/host/HostVanDetail.jsx'
 import { HostVanPhotos } from '../pages/host/HostVanPhotos.jsx'
 import { HostVanPricing } from '../pages/host/HostVanPricing.jsx'
 import { HostVanInfo } from '../pages/host/HostVanInfo.jsx'
+import { PageNotFound } from '../pages/PageNotFound.jsx'
 
 function App() {
 
@@ -24,7 +25,8 @@ function App() {
         <Routes>
 
           <Route element={<Layout/>}>            {/*Layout Routes*/}
-                                      
+          
+            <Route path='*' element={<PageNotFound/>}/>                                
             <Route path='/' element={<Home/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='/vans' element={<Vans/>}/>
