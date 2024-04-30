@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react"
-import { Link, useSearchParams } from "react-router-dom"
+import { useState } from "react"
+import { Link, useSearchParams, useLoaderData } from "react-router-dom"
+import { getVans } from "../api"
+
+
+export function loader(){
+    return getVans()
+}
 
 
 export function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [vans, setVans] = useState([])
-
+    /* const [vans, setVans] = useState([]) */
+    const [error, setError] = useState(null)
+    const vans = useLoaderData()
     const typeFilter = searchParams.get("type")
-
-    useEffect(() => {
-        fetch("/api/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
-    }, [])
 
     const displayedVans = typeFilter
 	? vans.filter(van => van.type === typeFilter)
@@ -35,6 +36,10 @@ export function Vans() {
         </div>
     ))
 
+    if (error){
+        return <h1>There was an error: {error.message}</h1>
+    }
+    
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
@@ -46,11 +51,6 @@ export function Vans() {
                 {typeFilter 
                 ? <button onClick={() => setSearchParams({})} className="van-type clear-filters">Clear Filter</button>
                 : null}
-
-               {/*  <Link to="?type=simple" className="van-type simple">Simple</Link>
-                <Link to="?type=rugged" className="van-type rugged">Rugged</Link>
-                <Link to="?type=luxury" className="van-type luxury">Luxury</Link>
-                <Link to="." className="van-type clear-filters">Back To All</Link> */}
             </nav>
             <div className="van-list">
                 {vanElements}
