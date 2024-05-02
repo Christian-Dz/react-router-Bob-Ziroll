@@ -1,39 +1,47 @@
-import { Outlet, NavLink } from "react-router-dom";
+import React from "react"
+import { NavLink, Outlet } from "react-router-dom"
 
-
-export function HostLayout (){
-
-    const activeStyle = {
+export default function HostLayout() {
+    const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
+
     return (
         <>
             <nav className="host-nav">
-                 {/* "/host"  --->   "." */}
-                <NavLink 
-                to="."                        
-                end
-                style={({isActive}) => isActive ? activeStyle : null}
-                >Dashboard</NavLink>
+                <NavLink
+                    to="."
+                    end
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Dashboard
+                </NavLink>
 
-                <NavLink 
-                to="hostvans"
-                style={({isActive}) => isActive ? activeStyle : null}
-                >Your Vans</NavLink>
+                <NavLink
+                    to="income"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Income
+                </NavLink>
+                
+                <NavLink
+                    to="vans"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Vans
+                </NavLink>
 
-                <NavLink 
-                to="income"
-                style={({isActive}) => isActive ? activeStyle : null}
-                >Income</NavLink>
+                <NavLink
+                    to="reviews"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Reviews
+                </NavLink>
 
-                <NavLink 
-                to="reviews"
-                style={({isActive}) => isActive ? activeStyle : null}
-                >Reviews</NavLink>
             </nav>
-            <Outlet/>
+            <Outlet />
         </>
     )
 }

@@ -1,14 +1,9 @@
 
 
+import React from "react"
 
-export function Reviews (){
-
-
-
+export default function Reviews() {
     return (
-        <>
-            <h1>Reviews here</h1>
-        
-        </>
+        <h1>Reviews page goes here</h1>
     )
 }
